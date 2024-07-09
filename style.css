@@ -1,28 +1,87 @@
 body {
 
-    background-color: black;
-    opacity: 0.7;
     
-    background-size: cover;
+    
+    background-color: black;
+    opacity: 0.8;
+    background-size:auto;
     background-repeat: no-repeat;
     margin: 0;
     height: 100vh;
+    font-family: sans-serif;
 
 
 
 }
+
+figure a {
+    background-color: #F2C6AC; /* Color base del botón */
+    display: flex;
+    flex-wrap: wrap;
+    margin: 100px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    min-width: 200px;
+    min-height: 50px;
+    image-orientation:flip;
+    text-decoration:none;
+    justify-content: center;
+    
+}
+
+figcaption {
+    
+    font-size: 100px;
+    display: flex;
+    color: #400303;
+    flex-wrap: wrap;
+    
+   
+  
+   
+    
+  
+    
+}
+    
+   
 
 
 
 h1 {
     color: white;
+    font-weight: bold;
     text-align: center;
     font-size:100px;
     border-color: black;
+    background-color: black;
+}
+
+header{
+    color: white;
+    text-align: justify;
+    font-size:30px;
+    
+    background-color: black;
+    margin: 50px;
+    
+}
+
+p1 {
+
+    line-height: 150%;
 }
 
 h2 {
+    
+    font-size:50px;
     color: white;
+    text-align: center;
+}
+
+h3 {
+    color: white;
+    background-color: black;
     text-align: center;
 }
 
@@ -88,4 +147,17 @@ main button {
     } */
 
 
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    min-width: 600px;
+    min-height: 100px;
+    image-orientation:flip;
+    display: inline-block;
+    
 }
