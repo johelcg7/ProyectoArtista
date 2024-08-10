@@ -2,13 +2,12 @@ body {
 
     
     
-    background-color: black;
-    opacity: 0.8;
-    background-size:auto;
+    
     background-repeat: no-repeat;
     margin: 0;
     height: 100vh;
-    font-family: sans-serif;
+    font-family: Helvetica, sans-serif;
+    background-color:black
 
 
 
@@ -45,45 +44,52 @@ figcaption {
 }
     
    
-
-
-
 h1 {
     color: white;
     font-weight: bold;
     text-align: center;
-    font-size:100px;
+    font-size: xxx-large;
     border-color: black;
-    background-color: black;
+    /* background-color: black; */
 }
 
 header{
     color: white;
-    text-align: justify;
+    text-align: center;
     font-size:30px;
+    /* background-color: black; */
     
-    background-color: black;
-    margin: 50px;
+    
     
 }
 
-p1 {
-
+p {
+    font-size: x-large;
     line-height: 150%;
+    text-align:justify;
+    margin: 50px;     
+    border-color: black;
+    /* background-color: black; */
 }
 
 h2 {
     
-    font-size:50px;
     color: white;
+    font-weight: bold;
     text-align: center;
+    font-size: x-large;
+    border-color: black;
+    /* background-color: black; */
 }
 
 h3 {
     color: white;
-    background-color: black;
+    /* background-color: black; */
     text-align: center;
+    font-size: large;
 }
+
+
 
 main button {
 
@@ -150,6 +156,7 @@ main button {
 }
 
 section {
+    
     display: flex;
     flex-wrap: wrap;
     margin: 5px;
@@ -160,4 +167,15 @@ section {
     image-orientation:flip;
     display: inline-block;
     
+    
+}
+
+header img {
+    border-radius: 50%;
+    border: solid;
+    border-color:azure;
+    /* truco: el ancho y el alto deben ser iguales */
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }
