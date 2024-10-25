@@ -1,0 +1,295 @@
+* {
+    box-sizing: border-box;
+}
+
+.rock-salt-regular {
+    font-family: "Rock Salt", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.righteous-regular {
+    font-family: "Righteous", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    background-image: url(./img/johelback.jpg);
+    color: #333;
+    border-radius: 7px;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+header {
+    background: #1c1c1c;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 7px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 70px;
+
+}
+
+.link-header {
+    text-decoration: none;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Oswald", sans-serif;
+    letter-spacing: 2px;
+    font-size: 30px;
+}
+
+
+.link-header:hover {
+    background-color: #9d512f;
+    /* Color del botón en hover */
+}
+
+.nombre-artista {
+    font-size: 50px;
+    font-family: "Righteous";
+    letter-spacing: 5px;
+    margin: 0;
+
+}
+
+.sobre-mi {
+    text-align: left;
+    /* Alinear el texto a la izquierda */
+    font-size: 18px;
+    /* Tamaño de la fuente */
+    font-family: "Oswald", sans-serif;
+    color: #f4f4f4;
+    width: 60%;
+    letter-spacing: 1px;
+}
+
+.subtitulos {
+    color: #a95e0b;
+    font-family: "Oswald", sans-serif;
+    font-size: 40px;
+}
+
+.enlaces {
+    text-decoration: none;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Oswald", sans-serif;
+    letter-spacing: 1px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+#spotify:hover {
+    background-color: rgba(30, 215, 96, 0.4);
+}
+
+#youtube:hover {
+    background-color: rgba(255, 0, 13, 0.4);
+}
+
+#instagram:hover {
+    background-color: rgba(88, 81, 216, 0.4);
+}
+
+#tiktok:hover {
+    background-color: rgba(2, 2, 2, 0.4);
+}
+
+#tidal:hover {
+    background-color: rgba(12, 5, 5, 0.3);
+}
+
+#apple:hover {
+    background-color: rgba(37, 37, 37, 0.3);
+}
+
+.bloque-enlace {
+    list-style: none;
+    padding: 0;
+}
+
+.lista-enlace {
+    display: inline;
+    margin: 0 7px;
+
+}
+
+.letra-pie {
+    color: #fff;
+    text-align: center;
+}
+
+.img-slide {
+    width: 600px;
+    /* Ancho deseado */
+    height: auto;
+    /* Mantener proporciones */
+    border: 2px solid #ccc;
+    /* Borde alrededor de la imagen */
+    border-radius: 10px;
+    /* Bordes redondeados */
+
+}
+
+.prensa {
+    display: flex;
+    /* Usar flexbox para alinear las imágenes */
+
+    flex-wrap: wrap;
+    /* Permitir que las imágenes se envuelvan */
+    gap: 20px;
+    /* Espacio entre las imágenes */
+}
+
+.prensa-img {
+
+    width: 30%;
+    height: auto;
+    /* Mantener proporciones */
+
+    border-radius: 10px;
+    /* Bordes redondeados para la imagen */
+
+    display: inline;
+    margin: 0 0px;
+
+}
+
+#prensa0 {
+    width: 42%;
+    height: auto;
+    /* Mantener proporciones */
+}
+
+#prensa3 {
+    width: 48%;
+    height: auto;
+    /* Mantener proporciones */
+}
+
+#contact-letra {
+    color: black;
+}
+
+#contactForm {
+
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0%;
+    max-width: 400px;
+
+}
+
+#message{
+    padding: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Organizar elementos en columna */
+    gap: 15px; /* Espacio entre los elementos */
+}
+
+.in{
+padding: 1%;
+width: 100%;
+}
+
+.boton-enviar{
+    padding: 10px;
+    background-color: #0a0a0a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+}
+
+.boton-enviar:hover {
+    background-color: #0056b3; /* Cambiar color al pasar el ratón */
+}
+
+.whatsapp-button {
+    position: fixed;
+    /* Fijo en la pantalla */
+    bottom: 20px;
+    /* Espacio desde el fondo */
+    right: 20px;
+    /* Espacio desde la derecha */
+    z-index: 1000;
+    /* Asegura que esté por encima de otros elementos */
+    animation: saltar 2s infinite;
+    /* Agrega la animación de saltar */
+  }
+  
+  @keyframes saltar {
+    0% {
+      transform: translateY(0);
+    }
+  
+    50% {
+      transform: translateY(-10px);
+    }
+  
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .whatsapp-button img {
+    width: 100px;
+    /* Ancho del icono */
+    height: 80px;
+    /* Alto del icono */
+    border-radius: 50%;
+    /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    /* Sombra para profundidad */
+    transition: transform 0.3s;
+    /* Transición suave */
+  }
+  
+  .whatsapp-button img:hover {
+    transform: scale(1.2);
+    /* Efecto de aumento al pasar el mouse */
+  }
+  
+  .parrafo-wsp {
+    font-size: medium;
+    color: white;
+    background-color: #000000;
+    padding-block: 10px;
+    margin-left: 0;
+    font-family: "Oswald", sans-serif;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
