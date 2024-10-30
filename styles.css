@@ -148,57 +148,6 @@ nav ul li {
     text-align: center;
 }
 
-.img-slide {
-    width: 600px;
-    /* Ancho deseado */
-    height: auto;
-    /* Mantener proporciones */
-    border: 2px solid #ccc;
-    /* Borde alrededor de la imagen */
-    border-radius: 10px;
-    /* Bordes redondeados */
-
-}
-
-.prensa {
-    display: flex;
-    /* Usar flexbox para alinear las imágenes */
-
-    flex-wrap: wrap;
-    /* Permitir que las imágenes se envuelvan */
-    gap: 20px;
-    /* Espacio entre las imágenes */
-}
-
-.prensa-img {
-
-    width: 30%;
-    height: auto;
-    /* Mantener proporciones */
-
-    border-radius: 10px;
-    /* Bordes redondeados para la imagen */
-
-    display: inline;
-    margin: 0 0px;
-
-}
-
-#prensa0 {
-    width: 42%;
-    height: auto;
-    /* Mantener proporciones */
-}
-
-#prensa3 {
-    width: 48%;
-    height: auto;
-    /* Mantener proporciones */
-}
-
-#contact-letra {
-    color: black;
-}
 
 #contactForm {
 
@@ -293,3 +242,73 @@ width: 100%;
     border-radius: 5px;
     cursor: pointer;
   }
+
+
+
+  .gallery {
+    max-width:50%;
+    
+    overflow: hidden;
+    
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.gallery-images img {
+    max-width: 100%;
+    display: block;
+    width: 100%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+button {
+    background-color: #a95e0b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3; /* Cambiar color al pasar el ratón */
+}
+
+/* slides de prensa */
+.prensa {
+    max-width:100%;
+    
+    overflow: hidden;
+    
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.prensa-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.prensa-slide a img {
+    max-width: 100%;
+    display: block;
+    width: 100%;
+}
+
+.buttons-prensa {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
