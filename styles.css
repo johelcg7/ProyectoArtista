@@ -16,7 +16,7 @@
 
 
 body {
-    font-family: 'Arial', sans-serif;
+    
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -32,11 +32,12 @@ body {
 }
 
 header {
-    background: #1c1c1c;
+    background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
     padding: 10px 0;
     text-align: center;
     border-radius: 7px;
+    
 }
 
 nav ul {
@@ -69,7 +70,7 @@ nav ul li {
 }
 
 .nombre-artista {
-    font-size: 50px;
+    font-size: 70px;
     font-family: "Righteous";
     letter-spacing: 5px;
     margin: 0;
@@ -93,8 +94,8 @@ nav ul li {
     font-size: 40px;
 }
 
-.enlaces {
-    text-decoration: none;
+.enlaces img{
+    /* 
     color: white;
     border: none;
     padding: 10px 20px;
@@ -104,15 +105,30 @@ nav ul li {
     letter-spacing: 1px;
     font-size: 20px;
     border-radius: 5px;
-    cursor: pointer;
-
+    cursor: pointer; */
+    
+    
+    width: auto; /* Ancho fijo */
+    height: 8vh; /* Alto fijo */
+    transition: transform 0.3s;
+    /* Transición suave */
+    
 }
 
-#spotify:hover {
+.enlaces img:hover{
+    transform: scale(1.2);
+    /* Efecto de aumento al pasar el mouse */
+}
+
+.enlaces{
+    text-decoration: none;
+}
+
+/* #spotify:hover {
     background-color: rgba(30, 215, 96, 0.4);
-}
+} */
 
-#youtube:hover {
+/* #youtube:hover {
     background-color: rgba(255, 0, 13, 0.4);
 }
 
@@ -130,16 +146,19 @@ nav ul li {
 
 #apple:hover {
     background-color: rgba(37, 37, 37, 0.3);
-}
+} */
 
 .bloque-enlace {
     list-style: none;
     padding: 0;
+    
+    
 }
 
 .lista-enlace {
     display: inline;
-    margin: 0 7px;
+    margin: 0 30px;
+    
 
 }
 
@@ -286,24 +305,26 @@ button:hover {
 }
 
 /* slides de prensa */
-.prensa {
-    max-width:100%;
-    
-    overflow: hidden;
-    
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
 
 .prensa-slide {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    
+    width: 50%; /* Ancho fijo */
+    height: 50vh; /* Alto fijo */
+    
 }
 
-.prensa-slide a img {
-    max-width: 100%;
-    display: block;
-    width: 100%;
+
+
+.prensa-img {
+
+    border-radius: 5%;
+    width: auto; /* Ancho fijo */
+    height: 100%; /* Alto fijo */
+    
+    
+    
 }
 
 .buttons-prensa {
