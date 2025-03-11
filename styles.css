@@ -333,3 +333,91 @@ button:hover {
     margin-top: 10px;
 }
 
+/* Media queries para dispositivos móviles */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    header {
+        padding: 20px 0;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .nombre-artista {
+        font-size: 50px;
+    }
+
+    .sobre-mi {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .subtitulos {
+        font-size: 30px;
+    }
+
+    .enlaces img {
+        height: 6vh;
+    }
+
+    .lista-enlace {
+        display: block;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    #contactForm {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    #message {
+        padding: 10%;
+    }
+
+    .gallery {
+        max-width: 100%;
+    }
+
+    .prensa-slide {
+        width: 100%;
+        height: auto;
+    }
+
+    .prensa-img {
+        height: auto;
+        width: 100%;
+    }
+}
+
+/* Media queries para dispositivos muy pequeños */
+@media (max-width: 480px) {
+    .nombre-artista {
+        font-size: 40px;
+    }
+
+    .subtitulos {
+        font-size: 25px;
+    }
+
+    .sobre-mi {
+        font-size: 14px;
+    }
+
+    .enlaces img {
+        height: 5vh;
+    }
+
+    .whatsapp-button img {
+        width: 80px;
+        height: 60px;
+    }
+}
+
