@@ -17,14 +17,17 @@
 
 <body>
     <header>
-        <div class="container">
+        <div class="container header-content">
             <h1 class="nombre-artista">Johel García</h1>
             <nav>
-                <ul>
-                    <li><a class="link-header" href="#bio">Sobre Mí</a></li>
+                <ul class="nav-links">
+                    <li><a class="link-header" href="#bio">Bio</a></li>
                     <li><a class="link-header" href="#links">Enlaces</a></li>
+                    <li><a class="link-header" href="#music">Mi Música</a></li>
+                    <li><a class="link-header" href="#prensa">Prensa</a></li>
                     <li><a class="link-header" href="#gallery">Galería</a></li>
                     <li><a class="link-header" href="#contact">Contacto</a></li>
+                    
                 </ul>
             </nav>
         </div>
@@ -32,7 +35,7 @@
 
     <main class="container">
         <section id="bio" class="bio">
-            <h2 class="subtitulos">Sobre Mí</h2>
+            <h2 class="subtitulos">Bio</h2>
             <div class="bio-content">
                 <div class="bio-text">
                     <h3>Inicios</h3>
@@ -83,12 +86,20 @@
             </div>
         </section>
 
+        <section id="music" class="music">
+            <h2 class="subtitulos">Mi Música</h2>
+            <!-- <p class="music-description">Escucha mis canciones directamente desde Spotify.</p> -->
+            <div class="music-embeds">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/2izIyhl2yy3wRx14hDHgKK?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+        </section>
+
         <section id="prensa" class="prensa">
             <h2 class="subtitulos">Prensa</h2>
             <div class="prensa-grid">
                 <div class="prensa-card">
                     <img src="https://i.ibb.co/YjymCJJ/prensa0.png" alt="Imagen 1">
-                    <h3>Te Fuiste y Qué</h3>
+                    <h3>Tehttps://larepublica.pe/espectaculos/musica/2022/05/24/pablo-velez-y-johel-garcia-los-directores-de-peliculas-deben-recurrir-al-talento-nacional-seductores-irresistibles Fuiste y Qué</h3>
                     <p>Pablo Vélez y Johel García presentan "Te Fuiste y Qué" y buscan priorizar el amor propio.</p>
                     <a href="https://conciertosperu.com.pe/pablo-velez-y-johel-garcia-presentan-te-fuiste-y-que-y-buscan-priorizar-el-amor-propio/" target="_blank" class="btn-leer-mas">Leer más</a>
                 </div>
@@ -130,26 +141,21 @@
 
         <section id="gallery" class="gallery">
             <h2 class="subtitulos">Galería</h2>
-            <div class="gallery-images">
-
-                <img class="img-slide" src="https://i.ibb.co/SQ4wkSp/1.png" alt="Imagen 1">
-
-
-                <img class="img-slide" src="https://i.ibb.co/GCJptqJ/2.png" alt="Imagen 2">
-
-
-                <img class="img-slide" src="https://i.ibb.co/jvsJR9B/3.png" alt="Imagen 3">
-
-
-                <img class="img-slide" src="https://i.ibb.co/x8t8W41/4.png" alt="Imagen 4">
+            <!-- <p class="gallery-description">Explora algunas de mis mejores fotos y momentos destacados.</p> -->
+            <div class="carousel-container">
+                <div class="carousel-images">
+                    <div class="img-slide"><img src="https://i.ibb.co/SQ4wkSp/1.png" alt="Imagen 1"></div>
+                    <div class="img-slide"><img src="https://i.ibb.co/GCJptqJ/2.png" alt="Imagen 2"></div>
+                    <div class="img-slide"><img src="https://i.ibb.co/jvsJR9B/3.png" alt="Imagen 3"></div>
+                    <div class="img-slide"><img src="https://i.ibb.co/x8t8W41/4.png" alt="Imagen 4"></div>
+                </div>
+                <button class="carousel-prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="carousel-next" onclick="changeSlide(1)">&#10095;</button>
             </div>
-            <div class="buttons">
-                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-                <button class="next" onclick="changeSlide(1)">&#10095;</button>
-
-            </div>
-            <div class="gallery-indicator"></div> <!-- Indicador de progreso -->
+            <div class="carousel-indicators"></div>
         </section>
+
+       
 
         <section id="contact" class="contact">
             <h2 class="subtitulos" id="contact-letra">Contacto</h2>
@@ -164,7 +170,7 @@
     </main>
 
     <footer>
-        <p class="letra-pie">&copy; 2024 Johel García. Todos los derechos reservados.</p>
+        <p class="letra-pie">&copy; 2025 Desarrollado por Spix Dev. Todos los derechos reservados.</p>
     </footer>
     <div class="whatsapp-button">
         <p class="parrafo-wsp">¡Contáctame!</p>

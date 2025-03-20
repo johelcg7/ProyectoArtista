@@ -4,17 +4,19 @@ let currentSlide = 0;
 
 function showSlide(index) {
     const slides = document.querySelectorAll('.img-slide');
-    if (index >= slides.length) {
+    const totalSlides = slides.length;
+
+    if (index >= totalSlides) {
         currentSlide = 0;
     } else if (index < 0) {
-        currentSlide = slides.length - 1;
+        currentSlide = totalSlides - 1;
     } else {
         currentSlide = index;
     }
-    
+
     const offset = -currentSlide * 100;
-    document.querySelector('.gallery-images').style.transform = `translateX(${offset}%)`;
-    updateGalleryIndicator(); // Actualizar el indicador
+    document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+    updateCarouselIndicators();
 }
 
 function changeSlide(direction) {
@@ -24,28 +26,37 @@ function changeSlide(direction) {
 // Muestra la primera imagen al cargar
 showSlide(currentSlide);
 
-function updateGalleryIndicator() {
-    const indicators = document.querySelectorAll('.gallery-indicator span');
+function updateCarouselIndicators() {
+    const indicators = document.querySelectorAll('.carousel-indicators span');
     indicators.forEach((indicator, index) => {
         indicator.classList.toggle('active', index === currentSlide);
     });
 }
 
 // Inicializar el indicador de galería
-function initGalleryIndicator() {
+function initCarouselIndicators() {
     const slides = document.querySelectorAll('.img-slide');
-    const indicatorContainer = document.querySelector('.gallery-indicator');
+    const indicatorContainer = document.querySelector('.carousel-indicators');
     slides.forEach((_, index) => {
         const indicator = document.createElement('span');
         indicator.addEventListener('click', () => showSlide(index));
         indicatorContainer.appendChild(indicator);
     });
-    updateGalleryIndicator();
+    updateCarouselIndicators();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    initGalleryIndicator(); // Llamar al inicializar la página
+    initCarouselIndicators();
+    showSlide(currentSlide);
 });
+
+function viewAllImages() {
+    const gallery = document.querySelector('.gallery-images');
+    gallery.style.flexWrap = 'wrap'; // Mostrar todas las imágenes en varias filas
+    gallery.style.justifyContent = 'center';
+    document.querySelector('.buttons').style.display = 'none'; // Ocultar botones de navegación
+    document.querySelector('.gallery-indicator').style.display = 'none'; // Ocultar indicador
+}
 
 // para prensa
 
@@ -113,3 +124,12 @@ async function fetchInstagramPosts() {
 
 // Llamar a la función para cargar las publicaciones al cargar la página
 document.addEventListener('DOMContentLoaded', fetchInstagramPosts);
+
+document.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+        header.classList.add('shrink');
+    } else {
+        header.classList.remove('shrink');
+    }
+});
