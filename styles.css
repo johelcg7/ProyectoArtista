@@ -556,6 +556,27 @@ button:hover {
         font-size: 14px; /* Reducir el tamaño de fuente */
         padding: 5px 10px; /* Reducir el padding */
     }
+
+    .nav-links {
+        display: none; /* Ocultar los enlaces por defecto */
+        flex-direction: column;
+        gap: 10px;
+        background-color: #111; /* Fondo del menú desplegable */
+        position: absolute;
+        top: 60px; /* Ajustar según el tamaño del header */
+        right: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links.show {
+        display: flex; /* Mostrar los enlaces cuando se active el menú */
+    }
+
+    .menu-toggle {
+        display: block; /* Mostrar el botón en dispositivos pequeños */
+    }
 }
 
 /* Media queries para dispositivos muy pequeños */
@@ -1080,5 +1101,14 @@ section {
 .link-card, .prensa-card {
     padding: 6px; /* Reducir el padding interno */
     border-radius: 4px; /* Bordes más compactos */
+}
+
+.menu-toggle {
+    display: none; /* Ocultar el botón por defecto */
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
 }
 

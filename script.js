@@ -133,3 +133,12 @@ document.addEventListener('scroll', () => {
         header.classList.remove('shrink');
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('show'); // Alternar la clase 'show'
+    });
+});
