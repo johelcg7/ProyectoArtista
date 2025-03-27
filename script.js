@@ -22,6 +22,14 @@ function showSlide(index) {
 }
 
 /**
+ * Cambia el slide actual en el carrusel principal.
+ * @param {number} direction - Dirección del cambio (-1 para anterior, 1 para siguiente).
+ */
+function changeSlide(direction) {
+    showSlide(currentSlide + direction);
+}
+
+/**
  * Actualiza los indicadores visuales del carrusel
  */
 function updateCarouselIndicators() {
@@ -58,35 +66,8 @@ function viewAllImages() {
     });
 }
 
-/**
- * Controla la visualización de slides en el carrusel de prensa
- * @param {number} index - Índice del slide a mostrar
- */
-function showSlidePrensa(index) {
-    const slidesPrensa = document.querySelectorAll('.prensa-img');
-    const totalSlides = slidesPrensa.length;
 
-    // Manejo de índices circulares
-    slidePrensa = index >= totalSlides ? 0 : index < 0 ? totalSlides - 1 : index;
 
-    // Aplica la transformación para mostrar el slide actual
-    const offset = -slidePrensa * 100;
-    document.querySelector('.prensa-slide').style.transform = `translateX(${offset}%)`;
-}
-
-/**
- * Inicializa el carrusel de prensa
- */
-function initPrensaIndicator() {
-    const slidesPrensa = document.querySelectorAll('.prensa-img');
-    const indicatorContainer = document.querySelector('.prensa-indicator');
-    
-    slidesPrensa.forEach((_, index) => {
-        const indicator = document.createElement('span');
-        indicator.addEventListener('click', () => showSlidePrensa(index));
-        indicatorContainer.appendChild(indicator);
-    });
-}
 
 /**
  * Obtiene y muestra las publicaciones de Instagram
@@ -119,9 +100,9 @@ async function fetchInstagramPosts() {
 document.addEventListener('DOMContentLoaded', () => {
     // Inicialización de carruseles
     initCarouselIndicators();
-    initPrensaIndicator();
+    
     showSlide(currentSlide);
-    showSlidePrensa(slidePrensa);
+   
     fetchInstagramPosts();
 
     // Configuración del menú móvil
