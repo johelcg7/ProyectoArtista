@@ -32,14 +32,15 @@ body {
 }
 
 header {
-    position: sticky;
+    position: fixed;
+    width: 100%;
     top: 0;
     z-index: 1000;
-    background: linear-gradient(90deg, #000000, #1a1a1a);
+    background: linear-gradient(90deg, #000000 0%, #1a1a1a 100%);
     color: #fff;
-    padding: 8px 15px; /* Reducir el padding */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: padding 0.3s ease, background-color 0.3s ease; /* Transición suave */
+    padding: 5px 0;
+    border-bottom: 2px solid #a95e0b;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 header.shrink {
@@ -51,7 +52,9 @@ header.shrink {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 5px; /* Reducir el espacio entre elementos */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .logo {
@@ -69,8 +72,8 @@ header.shrink {
 .nav-links {
     list-style: none;
     display: flex;
-    flex-wrap: wrap; /* Ajustar los enlaces en varias filas si es necesario */
-    gap: 8px; /* Reducir el espacio entre enlaces */
+    flex-wrap: nowrap;
+    gap: 10px; /* Reducir espacio entre links */
     margin: 0;
     padding: 0;
     justify-content: center; /* Centrar los enlaces */
@@ -78,23 +81,26 @@ header.shrink {
 
 .nav-links li {
     display: inline;
-    font-size: 12px; /* Reducir el tamaño de los elementos */
-    padding: 5px 8px; /* Compactar el padding */
+    margin: 0;
+    padding: 0;
 }
 
 .link-header {
     text-decoration: none;
     color: #fff;
     font-family: "Rock Salt", cursive;
-    font-size: 14px; /* Reducir el tamaño de fuente */
-    padding: 6px 10px; /* Reducir el padding */
+    font-size: 12px; /* Texto más pequeño */
+    padding: 6px 12px; /* Reducir padding */
     border-radius: 3px;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .link-header:hover {
     background-color: #a95e0b;
-    transform: scale(1.05); /* Efecto de aumento ligero */
+    transform: translateY(-2px);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
 nav ul {
@@ -112,12 +118,12 @@ nav ul li {
     text-decoration: none;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 6px 12px; /* Reducir padding */
+    border-radius: 3px;
     cursor: pointer;
     font-family: "Rock Salt";
-    letter-spacing: 5px;
-    font-size: 20px;
+    letter-spacing: 2px;
+    font-size: 12px; /* Texto más pequeño */
     transition: background-color 0.3s, transform 0.2s; /* Transición suave */
 }
 
@@ -129,15 +135,16 @@ nav ul li {
 }
 
 .nombre-artista {
-    font-size: 36px; /* Incrementar el tamaño del texto */
+    font-size: 35px; /* Título más grande */
     font-family: "Rock Salt";
-    letter-spacing: 3px; /* Ajustar el espaciado entre letras */
     margin: 0;
+    /* text-shadow: 2px 2px 4px rgba(169, 94, 11, 0.5); */
+    letter-spacing: 2px;
     transition: font-size 0.3s ease; /* Transición suave */
 }
 
 header.shrink .nombre-artista {
-    font-size: 30px; /* Ajustar el tamaño del texto al hacer scroll */
+    font-size: 24px; /* Ajustar el tamaño del texto al hacer scroll */
 }
 
 .sobre-mi {
@@ -239,7 +246,6 @@ header.shrink .nombre-artista {
     color: #fff;
     text-align: center;
 }
-
 
 #contactForm {
 
@@ -467,6 +473,22 @@ button:hover {
     background-color: #a95e0b; /* Color activo */
 }
 
+.prensa-card p {
+    font-size: 16px;
+    margin: 0 15px 15px;
+    color: #000000; /* Cambiar a negro para mejor contraste */
+    font-weight: 500; /* Hacer el texto un poco más grueso */
+    line-height: 1.5;
+}
+
+.prensa-card h3 {
+    font-size: 20px;
+    margin: 15px;
+    color: #000000; /* Cambiar a negro para mejor contraste */
+    font-family: "Righteous", serif;
+    font-weight: 600; /* Hacer el texto más grueso */
+}
+
 /* Media queries para dispositivos móviles */
 @media (max-width: 768px) {
     .container {
@@ -485,7 +507,7 @@ button:hover {
     }
 
     .nombre-artista {
-        font-size: 50px;
+        font-size: 60px;
     }
 
     .sobre-mi {
@@ -534,9 +556,7 @@ button:hover {
         width: 100%;
     }
 
-    header {
-        padding: 10px; /* Reducir el padding para pantallas pequeñas */
-    }
+  
 
     .header-content {
         flex-direction: column; /* Cambiar a columna */
@@ -544,7 +564,7 @@ button:hover {
     }
 
     .nombre-artista {
-        font-size: 24px; /* Reducir el tamaño del texto */
+        font-size: 30px; /* Reducir el tamaño del texto */
     }
 
     .nav-links {
@@ -577,12 +597,54 @@ button:hover {
     .menu-toggle {
         display: block; /* Mostrar el botón en dispositivos pequeños */
     }
+
+    .header-content {
+        justify-content: space-between;
+        flex-direction: row;
+        padding: 0 15px;
+    }
+
+    .menu-toggle {
+        display: block
+    }
+
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 50px; /* Altura del header */
+        left: 0;
+        width: 100%;
+        background: linear-gradient(90deg, #000000 0%, #1a1a1a 100%);
+        padding: 20px;
+        text-align: center;
+        border-top: 2px solid #a95e0b;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+    }
+
+    .nav-links.show {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links li {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .link-header {
+        display: block;
+        padding: 10px;
+        width: 100%;
+        font-size: 16px;
+    }
 }
 
 /* Media queries para dispositivos muy pequeños */
 @media (max-width: 480px) {
     .nombre-artista {
-        font-size: 40px;
+        font-size: 50px;
     }
 
     .subtitulos {
@@ -607,7 +669,7 @@ button:hover {
     }
 
     .nombre-artista {
-        font-size: 20px; /* Reducir aún más el tamaño del texto */
+        font-size: 30px; /* Reducir aún más el tamaño del texto */
     }
 
     .link-header {
@@ -627,8 +689,8 @@ button:hover {
 }
 
 .prensa-card {
-    background-color: #fff;
-    border-radius: 5px; /* Bordes más compactos */
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con 50% de opacidad */
+    border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -649,14 +711,16 @@ button:hover {
 .prensa-card h3 {
     font-size: 20px;
     margin: 15px;
-    color: #333;
+    color: #000000; /* Cambiar a negro para mejor contraste */
     font-family: "Righteous", serif;
+    font-weight: 600; /* Hacer el texto más grueso */
 }
 
 .prensa-card p {
     font-size: 16px;
     margin: 0 15px 15px;
-    color: #555;
+    color: #000000; /* Cambiar a negro para mejor contraste */
+    font-weight: 500; /* Hacer el texto un poco más grueso */
     line-height: 1.5;
 }
 
@@ -807,6 +871,7 @@ main.container {
     flex-direction: column;
     gap: 20px; /* Espacio entre secciones */
     padding: 20px;
+    margin-top: 60px; /* Adjust this value based on your header height */
 }
 
 .bio-content {
@@ -1110,5 +1175,188 @@ section {
     font-size: 24px;
     color: #fff;
     cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+footer {
+    background: linear-gradient(90deg, #000000 0%, #1a1a1a 100%);
+    color: #fff;
+    padding: 20px 0;
+    position: relative;
+    border-top: 2px solid #a95e0b;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.letra-pie {
+    color: #fff;
+    text-align: center;
+    font-family: "Rock Salt", cursive;
+    font-size: 14px;
+    text-shadow: 0 0 5px rgba(169, 94, 11, 0.5);
+    margin: 0;
+    letter-spacing: 1px;
+    position: relative;
+    padding: 10px;
+}
+
+.letra-pie::before,
+.letra-pie::after {
+    content: '★';
+    color: #a95e0b;
+    margin: 0 10px;
+    font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    .letra-pie {
+        font-size: 12px;
+    }
+    
+    .letra-pie::before,
+    .letra-pie::after {
+        display: none; /* Hide stars on mobile */
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .container {
+        width: 90%;
+    }
+    
+    .nombre-artista {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 992px) {
+    .nav-links {
+        gap: 5px;
+    }
+    
+    .link-header {
+        font-size: 11px;
+        padding: 5px 8px;
+    }
+    
+    .subtitulos {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 8px 0;
+    }
+
+    .header-content {
+        justify-content: space-between;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(90deg, #000000 0%, #1a1a1a 100%);
+        padding: 10px;
+        border-top: 2px solid #a95e0b;
+    }
+
+    .nav-links.show {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .gallery,
+    .prensa-slide {
+        max-width: 100%;
+    }
+
+    .music-embeds iframe {
+        height: 280px;
+    }
+}
+
+@media (max-width: 576px) {
+    .nombre-artista {
+        font-size: 20px;
+    }
+
+    .subtitulos {
+        font-size: 28px;
+    }
+
+    .link-card {
+        min-width: 140px;
+    }
+
+    .links-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .music-embeds iframe {
+        height: 240px;
+    }
+
+    .letra-pie {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .nombre-artista {
+        font-size: 18px;
+    }
+
+    .links-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .subtitulos {
+        font-size: 24px;
+    }
+
+    .music-embeds iframe {
+        height: 200px;
+    }
+}
+
+/* Fix Landscape Mode */
+@media (max-height: 500px) and (orientation: landscape) {
+    header {
+        padding: 5px 0;
+    }
+
+    .nav-links.show {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .nombre-artista {
+        font-size: 30px;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+    .link-header:hover,
+    .btn-leer-mas:hover,
+    .link-card:hover {
+        transform: none;
+    }
+
+    .link-header:active,
+    .btn-leer-mas:active,
+    .link-card:active {
+        transform: scale(0.98);
+    }
 }
 

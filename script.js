@@ -1,31 +1,29 @@
 'use strict';
 
+// Variables globales para control de carruseles
 let currentSlide = 0;
+let slidePrensa = 0;
 
+/**
+ * Controla la visualización de slides en el carrusel principal
+ * @param {number} index - Índice del slide a mostrar
+ */
 function showSlide(index) {
     const slides = document.querySelectorAll('.img-slide');
     const totalSlides = slides.length;
 
-    if (index >= totalSlides) {
-        currentSlide = 0;
-    } else if (index < 0) {
-        currentSlide = totalSlides - 1;
-    } else {
-        currentSlide = index;
-    }
+    // Manejo de índices circulares
+    currentSlide = index >= totalSlides ? 0 : index < 0 ? totalSlides - 1 : index;
 
+    // Aplica la transformación para mostrar el slide actual
     const offset = -currentSlide * 100;
     document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
     updateCarouselIndicators();
 }
 
-function changeSlide(direction) {
-    showSlide(currentSlide + direction);
-}
-
-// Muestra la primera imagen al cargar
-showSlide(currentSlide);
-
+/**
+ * Actualiza los indicadores visuales del carrusel
+ */
 function updateCarouselIndicators() {
     const indicators = document.querySelectorAll('.carousel-indicators span');
     indicators.forEach((indicator, index) => {
@@ -33,10 +31,13 @@ function updateCarouselIndicators() {
     });
 }
 
-// Inicializar el indicador de galería
+/**
+ * Inicializa los indicadores del carrusel principal
+ */
 function initCarouselIndicators() {
     const slides = document.querySelectorAll('.img-slide');
     const indicatorContainer = document.querySelector('.carousel-indicators');
+    
     slides.forEach((_, index) => {
         const indicator = document.createElement('span');
         indicator.addEventListener('click', () => showSlide(index));
@@ -45,48 +46,41 @@ function initCarouselIndicators() {
     updateCarouselIndicators();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    initCarouselIndicators();
-    showSlide(currentSlide);
-});
-
+/**
+ * Cambia la visualización para mostrar todas las imágenes en formato galería
+ */
 function viewAllImages() {
     const gallery = document.querySelector('.gallery-images');
-    gallery.style.flexWrap = 'wrap'; // Mostrar todas las imágenes en varias filas
+    gallery.style.flexWrap = 'wrap';
     gallery.style.justifyContent = 'center';
-    document.querySelector('.buttons').style.display = 'none'; // Ocultar botones de navegación
-    document.querySelector('.gallery-indicator').style.display = 'none'; // Ocultar indicador
+    ['buttons', 'gallery-indicator'].forEach(className => {
+        document.querySelector(`.${className}`).style.display = 'none';
+    });
 }
 
-// para prensa
-
-let slidePrensa = 0;
-
+/**
+ * Controla la visualización de slides en el carrusel de prensa
+ * @param {number} index - Índice del slide a mostrar
+ */
 function showSlidePrensa(index) {
     const slidesPrensa = document.querySelectorAll('.prensa-img');
-    if (index >= slidesPrensa.length) {
-        slidePrensa = 0;
-    } else if (index < 0) {
-        slidePrensa = slidesPrensa.length - 1;
-    } else {
-        slidePrensa = index;
-    }
+    const totalSlides = slidesPrensa.length;
 
+    // Manejo de índices circulares
+    slidePrensa = index >= totalSlides ? 0 : index < 0 ? totalSlides - 1 : index;
+
+    // Aplica la transformación para mostrar el slide actual
     const offset = -slidePrensa * 100;
     document.querySelector('.prensa-slide').style.transform = `translateX(${offset}%)`;
 }
 
-function changeSlidePrensa(directionPrensa) {
-    showSlidePrensa(slidePrensa + directionPrensa);
-}
-
-// Muestra la primera imagen al cargar
-showSlidePrensa(slidePrensa);
-
-// Inicializar el indicador de prensa
+/**
+ * Inicializa el carrusel de prensa
+ */
 function initPrensaIndicator() {
     const slidesPrensa = document.querySelectorAll('.prensa-img');
     const indicatorContainer = document.querySelector('.prensa-indicator');
+    
     slidesPrensa.forEach((_, index) => {
         const indicator = document.createElement('span');
         indicator.addEventListener('click', () => showSlidePrensa(index));
@@ -94,22 +88,21 @@ function initPrensaIndicator() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    initPrensaIndicator(); // Llamar al inicializar la página
-});
-
+/**
+ * Obtiene y muestra las publicaciones de Instagram
+ */
 async function fetchInstagramPosts() {
-    const accessToken = 'YOUR_INSTAGRAM_ACCESS_TOKEN'; // Reemplazar con un token válido
-    const userId = 'YOUR_INSTAGRAM_USER_ID'; // Reemplazar con el ID de usuario de Instagram
+    const accessToken = 'YOUR_INSTAGRAM_ACCESS_TOKEN';
+    const userId = 'YOUR_INSTAGRAM_USER_ID';
     const url = `https://graph.instagram.com/${userId}/media?fields=id,caption,media_type,media_url,permalink&access_token=${accessToken}`;
 
     try {
         const response = await fetch(url);
         const data = await response.json();
-
         const feedContainer = document.getElementById('instagram-feed');
+
         data.data.forEach(post => {
-            if (post.media_type === 'IMAGE' || post.media_type === 'CAROUSEL_ALBUM') {
+            if (['IMAGE', 'CAROUSEL_ALBUM'].includes(post.media_type)) {
                 const imgElement = document.createElement('a');
                 imgElement.href = post.permalink;
                 imgElement.target = '_blank';
@@ -122,23 +115,58 @@ async function fetchInstagramPosts() {
     }
 }
 
-// Llamar a la función para cargar las publicaciones al cargar la página
-document.addEventListener('DOMContentLoaded', fetchInstagramPosts);
-
-document.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-        header.classList.add('shrink');
-    } else {
-        header.classList.remove('shrink');
-    }
-});
-
+// Inicialización y event listeners
 document.addEventListener('DOMContentLoaded', () => {
+    // Inicialización de carruseles
+    initCarouselIndicators();
+    initPrensaIndicator();
+    showSlide(currentSlide);
+    showSlidePrensa(slidePrensa);
+    fetchInstagramPosts();
+
+    // Configuración del menú móvil
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+    let menuOpen = false;
 
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('show'); // Alternar la clase 'show'
+    // Control del menú móvil
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuOpen = !menuOpen;
+        menuToggle.setAttribute('aria-expanded', menuOpen);
+        navLinks.classList.toggle('show');
     });
+
+    // Cierre del menú al hacer clic fuera
+    document.addEventListener('click', (e) => {
+        if (menuOpen && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+            menuOpen = false;
+            navLinks.classList.remove('show');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Cierre del menú al hacer clic en enlaces
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuOpen = false;
+            navLinks.classList.remove('show');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    // Ajuste del menú en cambio de tamaño de ventana
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && menuOpen) {
+            menuOpen = false;
+            navLinks.classList.remove('show');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+});
+
+// Control de la animación del header al hacer scroll
+document.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    header.classList.toggle('shrink', window.scrollY > 50);
 });
