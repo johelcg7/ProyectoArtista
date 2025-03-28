@@ -1,0 +1,187 @@
+# Code Citations
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('D
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoade
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoaded', () => {
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoaded', () => {
+    const menu
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoaded', () => {
+    const menuToggle = 
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menu
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', ()
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('show
+```
+
+
+## License: unknown
+https://github.com/EmeshTheRipper/220274_Emesh_Lamichhane/blob/487f65aed7a669f9194f0f7ffb05fb82eba36994/script.js
+
+```
+('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('show')
+```
+

@@ -66,33 +66,48 @@ function viewAllImages() {
     });
 }
 
-
-
-
 /**
  * Obtiene y muestra las publicaciones de Instagram
  */
 async function fetchInstagramPosts() {
-    const accessToken = 'YOUR_INSTAGRAM_ACCESS_TOKEN';
-    const userId = 'YOUR_INSTAGRAM_USER_ID';
-    const url = `https://graph.instagram.com/${userId}/media?fields=id,caption,media_type,media_url,permalink&access_token=${accessToken}`;
+    const accessToken = 'IGAAS8CoJ1UzJBZAE05VUJKSlp0My1JS3RfUWVNM0FDQnhEeVBGbzdWX2F0NmRqbTJsQUR5QWpidDVrT0FqYzY4a1VSdTFsd2V4U1F6ZAjlKTVBZAb1I0YmRTSHRzX2pOWkNsMHIxbDF5VVlVVERIMlN1Sy1aOXRUUXc3dlQ1QXFMVQZDZD';
+    const userId = '17841400353584478';
+    const url = `https://graph.instagram.com/${userId}/media?fields=id,caption,media_type,media_url,permalink,timestamp&access_token=${accessToken}`;
 
     try {
         const response = await fetch(url);
+        if (!response.ok) throw new Error(`Error: ${response.status}`);
+        
         const data = await response.json();
         const feedContainer = document.getElementById('instagram-feed');
+        
+        if (!data.data || data.data.length === 0) {
+            feedContainer.innerHTML = '<p class="no-posts">No hay publicaciones disponibles.</p>';
+            return;
+        }
 
-        data.data.forEach(post => {
-            if (['IMAGE', 'CAROUSEL_ALBUM'].includes(post.media_type)) {
-                const imgElement = document.createElement('a');
-                imgElement.href = post.permalink;
-                imgElement.target = '_blank';
-                imgElement.innerHTML = `<img src="${post.media_url}" alt="${post.caption || 'Instagram Post'}">`;
-                feedContainer.appendChild(imgElement);
-            }
-        });
+        feedContainer.innerHTML = data.data
+            .filter(post => ['IMAGE', 'CAROUSEL_ALBUM'].includes(post.media_type))
+            .slice(0, 6) // Limitar a 6 posts
+            .map(post => {
+                const caption = post.caption || 'Nueva publicación de Instagram';
+                const date = new Date(post.timestamp).toLocaleDateString();
+                return `
+                    <a href="${post.permalink}" target="_blank" class="instagram-post">
+                        <img src="${post.media_url}" alt="${caption}">
+                        <div class="post-overlay">
+                            <p class="post-caption">${caption}</p>
+                            <small>${date}</small>
+                        </div>
+                    </a>
+                `;
+            })
+            .join('');
+
     } catch (error) {
         console.error('Error fetching Instagram posts:', error);
+        document.getElementById('instagram-feed').innerHTML = 
+            '<p class="error-message">Error al cargar las publicaciones.</p>';
     }
 }
 
@@ -102,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCarouselIndicators();
     
     showSlide(currentSlide);
-   
+
     fetchInstagramPosts();
 
     // Configuración del menú móvil
