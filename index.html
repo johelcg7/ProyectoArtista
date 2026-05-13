@@ -1,192 +1,1285 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Johel García - Página Oficial</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Righteous&family=Rock+Salt&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Oswald:wght@200..700&family=Righteous&family=Rock+Salt&display=swap"
-        rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Johel García — Cantautor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,700;1,900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red:    #C8291A;
+  --red2:   #A8200F;
+  --red3:   #D93520;
+  --cream:  #F2E8D0;
+  --cream2: #E8D8BC;
+  --dark:   #1A0A06;
+  --ink:    #0D0604;
+  --gold:   #C8A444;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--red);
+  color: var(--cream);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* Grain texture overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23g)' opacity='0.09'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* ── HEADER ── */
+header {
+  position: fixed; top: 0; width: 100%;
+  z-index: 200;
+  background: var(--ink);
+  border-bottom: 3px solid var(--red);
+  display: flex;
+  align-items: stretch;
+  height: 68px;
+}
+
+/* Top accent line */
+header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--red), var(--cream) 40%, var(--red));
+}
+
+.logo-block {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0 1.5rem;
+  border-right: 1px solid rgba(242,232,208,0.12);
+  text-decoration: none;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Red left accent bar */
+.logo-block::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 12px; bottom: 12px;
+  width: 3px;
+  background: var(--red);
+}
+
+.logo-icon {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+  color: var(--red);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.logo-block .name {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1.45rem;
+  color: var(--cream);
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+.logo-block .role {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(242,232,208,0.4);
+  margin-top: 3px;
+}
+
+nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1.1rem;
+  text-decoration: none;
+  color: rgba(242,232,208,0.55);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.15s;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+nav a:hover { color: var(--cream); }
+nav a:hover::after { transform: scaleX(1); }
+
+/* Contacto link — special style */
+nav a:last-child {
+  color: var(--cream);
+  background: var(--red);
+  padding: 0 1.3rem;
+  margin-left: 0.5rem;
+  font-weight: 800;
+  transition: background 0.15s;
+}
+nav a:last-child::after { display: none; }
+nav a:last-child:hover { background: var(--red3); color: var(--cream); }
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  border-left: 1px solid rgba(242,232,208,0.15);
+  color: var(--cream);
+  padding: 0 1.2rem;
+  cursor: pointer;
+  align-self: stretch;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 54px;
+  margin-left: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-btn span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--cream);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+
+.menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile nav dropdown */
+.mobile-nav {
+  position: fixed;
+  top: 68px; left: 0; width: 100%;
+  background: var(--ink);
+  border-bottom: 3px solid var(--cream);
+  z-index: 199;
+  flex-direction: column;
+  display: none;
+  overflow: hidden;
+}
+
+.mobile-nav.open {
+  display: flex;
+}
+
+.mobile-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.95rem 1.5rem;
+  text-decoration: none;
+  color: rgba(242,232,208,0.65);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(242,232,208,0.07);
+  transition: color 0.15s, background 0.15s, padding-left 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.mobile-nav a::before {
+  content: '—';
+  color: var(--red);
+  font-size: 0.7rem;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.mobile-nav a:last-child {
+  border-bottom: none;
+  color: var(--cream);
+  background: rgba(200,41,26,0.2);
+}
+
+.mobile-nav a:hover, .mobile-nav a:active {
+  color: var(--cream);
+  background: rgba(200,41,26,0.15);
+  padding-left: 2rem;
+}
+
+.mobile-nav a:hover::before, .mobile-nav a:active::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--red);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 86px 6vw 5rem;
+  gap: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Worn diagonal scratch lines */
+.hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -48deg,
+    transparent,
+    transparent 60px,
+    rgba(0,0,0,0.03) 60px,
+    rgba(0,0,0,0.03) 61px
+  );
+  pointer-events: none;
+}
+
+.hero-left {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.hero-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 32px; height: 2px;
+  background: var(--cream);
+  opacity: 0.5;
+}
+
+.hero-name {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  line-height: 0.88;
+}
+
+.hero-name .first {
+  display: block;
+  font-style: italic;
+  font-size: clamp(4rem, 9vw, 7.5rem);
+  color: var(--cream);
+}
+
+.hero-name .last {
+  display: block;
+  font-style: normal;
+  font-size: clamp(4.5rem, 10vw, 8.5rem);
+  color: var(--cream);
+  letter-spacing: -0.01em;
+}
+
+.hero-hey {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 7vw, 6rem);
+  color: var(--ink);
+  background: var(--cream);
+  padding: 0.1em 0.35em;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  transform: rotate(-1deg);
+  align-self: flex-start;
+  max-width: 100%;
+}
+
+.hero-tagline {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: rgba(242,232,208,0.7);
+  line-height: 1.5;
+  max-width: 380px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.btn-cream {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: var(--cream);
+  color: var(--ink);
+  text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background 0.15s, transform 0.15s;
+  border: 2px solid var(--cream);
+}
+.btn-cream:hover { background: var(--cream2); transform: translateY(-2px); }
+
+.btn-ghost {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: transparent;
+  color: var(--cream);
+  text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 2px solid rgba(242,232,208,0.5);
+  transition: border-color 0.15s, transform 0.15s;
+}
+.btn-ghost:hover { border-color: var(--cream); transform: translateY(-2px); }
+
+/* ── PHOTO FRAME (poster style) ── */
+.hero-right {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-top: 3rem;
+}
+
+.photo-frame {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+.photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: -5px -5px 5px 5px;
+  border: 2px solid rgba(242,232,208,0.3);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.photo-frame img {
+  width: 100%;
+  display: block;
+  filter: sepia(15%) contrast(1.1) brightness(0.95);
+  border: 3px solid var(--cream);
+}
+
+/* Torn bottom edge of photo */
+.photo-frame::after {
+  content: '';
+  position: absolute;
+  bottom: -8px; left: 0; right: 0;
+  height: 16px;
+  background: var(--red);
+  clip-path: polygon(0 100%,2% 20%,5% 80%,8% 10%,11% 70%,14% 5%,17% 65%,21% 15%,24% 75%,27% 0%,31% 60%,35% 20%,38% 80%,42% 5%,45% 70%,49% 20%,52% 85%,56% 10%,59% 65%,62% 0%,66% 75%,70% 20%,73% 80%,77% 15%,80% 70%,84% 5%,87% 60%,91% 20%,94% 75%,97% 10%,100% 55%,100% 100%);
+  z-index: 4;
+}
+
+/* Album title sticker on photo */
+.photo-sticker {
+  position: absolute;
+  top: -18px; left: 16px;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 2px solid var(--cream);
+  z-index: 10;
+}
+
+/* ── BAND STRIP ── */
+.band-strip {
+  background: var(--ink);
+  border-top: 3px solid var(--cream);
+  border-bottom: 3px solid var(--cream);
+  padding: 0.7rem 6vw;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.strip-item {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(242,232,208,0.5);
+  flex-shrink: 0;
+}
+
+.strip-dot {
+  width: 4px; height: 4px;
+  background: var(--red3);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── SECTIONS ── */
+.sec-dark {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.sec-red {
+  background: var(--red2);
+}
+
+.sec-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 7rem 6vw;
+}
+
+/* Section header */
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  border-bottom: 2px solid var(--cream);
+  padding-bottom: 0.8rem;
+}
+
+.sec-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgba(242,232,208,0.4);
+}
+
+.sec-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 400;
+  line-height: 0.9;
+  color: var(--cream);
+}
+
+.sec-title em { font-style: italic; }
+
+.sec-title-inline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--cream);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ── BIO ── */
+.bio-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.bio-photo-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.bio-photo-wrap::before {
+  content: '';
+  position: absolute;
+  top: 10px; left: 10px; right: -10px; bottom: -10px;
+  background: repeating-linear-gradient(45deg, var(--red3) 0, var(--red3) 1px, transparent 1px, transparent 6px);
+  opacity: 0.4;
+}
+
+.bio-photo-wrap img {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 1;
+  border: 3px solid var(--cream);
+  filter: sepia(20%) contrast(1.08);
+}
+
+.bio-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(242,232,208,0.4);
+  text-align: center;
+  margin-top: 0.8rem;
+}
+
+.bio-entries { display: flex; flex-direction: column; gap: 1.8rem; }
+
+.bio-entry {
+  border-top: 1px solid rgba(242,232,208,0.15);
+  padding-top: 1.2rem;
+}
+
+.bio-entry h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--red3);
+  margin-bottom: 0.6rem;
+}
+
+.bio-entry p {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: rgba(242,232,208,0.75);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ── PLATFORMS ── */
+.plat-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border: 2px solid var(--cream);
+  margin-top: 3rem;
+}
+
+.plat-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.5rem 0.5rem;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  color: var(--cream);
+  border-right: 1px solid rgba(242,232,208,0.2);
+  transition: background 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+.plat-tile:last-child { border-right: none; }
+
+.plat-tile::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 3px;
+  background: var(--cream);
+  transform: scaleX(0);
+  transition: transform 0.2s;
+}
+
+.plat-tile:hover { background: rgba(242,232,208,0.08); }
+.plat-tile:hover::after { transform: scaleX(1); }
+
+.plat-tile img {
+  width: 32px; height: 32px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.6;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.plat-tile:hover img { opacity: 1; transform: scale(1.1); }
+
+.plat-tile span {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(242,232,208,0.5);
+  transition: color 0.2s;
+}
+
+.plat-tile:hover span { color: var(--cream); }
+
+/* ── SPLIT: MÚSICA + GALERÍA ── */
+.split-wrap {
+  background: var(--red);
+  border-top: 3px solid var(--cream);
+}
+
+.split-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 7rem 6vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.split-head {
+  border-bottom: 2px solid rgba(242,232,208,0.3);
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.8rem;
+}
+
+.split-kicker {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(242,232,208,0.5);
+  margin-bottom: 0.3rem;
+}
+
+.split-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 0.95;
+}
+
+.split-title em { font-style: italic; }
+
+.music-box {
+  border: 2px solid rgba(242,232,208,0.3);
+  position: relative;
+}
+
+.music-box iframe { display: block; border: none; width: 100%; }
+
+.car-box {
+  border: 2px solid rgba(242,232,208,0.3);
+  overflow: hidden;
+  position: relative;
+}
+
+.car-track { display: flex; transition: transform 0.5s cubic-bezier(.25,.46,.45,.94); }
+.car-slide  { min-width: 100%; aspect-ratio: 4/3; overflow: hidden; }
+.car-slide img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: sepia(20%) contrast(1.1);
+}
+
+.car-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  background: rgba(0,0,0,0.4);
+  border-top: 1px solid rgba(242,232,208,0.2);
+}
+
+.car-btn {
+  background: none;
+  border: 2px solid rgba(242,232,208,0.3);
+  color: var(--cream);
+  width: 40px; height: 40px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+  font-family: 'Barlow Condensed', sans-serif;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.car-btn:hover { border-color: var(--cream); background: rgba(242,232,208,0.1); }
+
+.car-dots { display: flex; gap: 6px; }
+.car-dot {
+  width: 22px; height: 3px;
+  background: rgba(242,232,208,0.25);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.car-dot.on { background: var(--cream); }
+
+/* ── PRENSA ── */
+.prensa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2px;
+  background: rgba(0,0,0,0.3);
+  border: 2px solid rgba(242,232,208,0.2);
+  margin-top: 3rem;
+}
+
+.p-card {
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: background 0.2s;
+}
+.p-card:hover { background: #230e08; }
+
+.p-img { aspect-ratio: 16/9; overflow: hidden; }
+.p-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: sepia(25%) contrast(1.1);
+  transition: transform 0.5s;
+}
+.p-card:hover .p-img img { transform: scale(1.05); }
+
+.p-body {
+  padding: 1.1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid var(--red3);
+}
+
+.p-source {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--red3);
+  margin-bottom: 0.4rem;
+}
+
+.p-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.p-card p {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.7rem;
+  line-height: 1.6;
+  color: rgba(242,232,208,0.45);
+  flex: 1;
+  margin-bottom: 0.8rem;
+}
+
+.p-link {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-decoration: none;
+  align-self: flex-start;
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+.p-link:hover { opacity: 1; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  border-top: 3px solid var(--cream);
+  padding: 3rem 6vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-brand {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1.8rem;
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.footer-copy {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(242,232,208,0.35);
+}
+
+/* ── WHATSAPP ── */
+.wa {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  z-index: 300;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: bob 3s ease-in-out infinite;
+}
+
+@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+.wa-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--cream);
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+.wa-icon {
+  width: 52px; height: 52px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 3px solid var(--ink);
+  box-shadow: 0 0 20px rgba(37,211,102,0.4);
+  transition: transform 0.2s;
+}
+.wa:hover .wa-icon { transform: scale(1.1); }
+.wa-icon img { width: 28px; height: 28px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; padding-top: 86px; padding-bottom: 4rem; gap: 2.5rem; min-height: auto; }
+  .hero-right { justify-content: flex-start; }
+  .photo-frame { max-width: 360px; }
+  .bio-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .bio-photo-wrap { max-width: 360px; }
+  .plat-grid { grid-template-columns: repeat(3, 1fr); }
+  .plat-tile { border-bottom: 1px solid rgba(242,232,208,0.15); }
+  .split-inner { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 6vw; }
+  nav { display: none; }
+  .menu-btn { display: flex; }
+  .music-box iframe { height: 280px; }
+  .sec-head { margin-bottom: 2rem; }
+  .sec-inner { padding: 5rem 6vw; }
+  .photo-sticker { font-size: 0.55rem; padding: 4px 10px; }
+}
+
+@media (max-width: 768px) {
+  .hero { padding-top: 80px; padding-left: 5vw; padding-right: 5vw; }
+  .plat-grid { grid-template-columns: repeat(3, 1fr); }
+  .prensa-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-tagline { font-size: 1rem; }
+  .logo-block { padding: 0 1rem; }
+  .sec-inner { padding: 4.5rem 5vw; }
+  .split-inner { padding: 4.5rem 5vw; }
+  .band-strip { padding: 0.6rem 5vw; gap: 1.5rem; }
+  footer { padding: 2.5rem 5vw; }
+}
+
+@media (max-width: 560px) {
+  .plat-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-name .first { font-size: 3.2rem; }
+  .hero-name .last  { font-size: 3.6rem; }
+  .hero-hey { font-size: 2rem; }
+  .hero-cta { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+  .hero-left { gap: 1.1rem; }
+  .sec-inner { padding: 4rem 5vw; }
+  .split-inner { padding: 4rem 5vw; }
+  footer { flex-direction: column; align-items: flex-start; gap: 0.4rem; padding: 2rem 5vw; }
+  .music-box iframe { height: 240px; }
+  .prensa-grid { grid-template-columns: 1fr; }
+  .sec-head { gap: 0.8rem; margin-bottom: 1.5rem; padding-bottom: 0.6rem; }
+  .sec-title { font-size: 2.4rem; }
+  .split-title { font-size: 2rem; }
+  .split-head { margin-bottom: 1.2rem; }
+  .hero { padding-bottom: 3.5rem; padding-left: 5vw; padding-right: 5vw; }
+  .btn-cream, .btn-ghost { width: 100%; text-align: center; padding: 1rem 1.5rem; }
+  .band-strip { padding: 0.6rem 5vw; gap: 1rem; }
+  .bio-entry p { font-size: 0.95rem; }
+  .bio-entries { gap: 1.4rem; }
+  .bio-entry { padding-top: 1rem; }
+  .plat-tile { padding: 1.3rem 0.5rem; }
+  .p-body { padding: 1rem; }
+  .prensa-grid { margin-top: 2rem; }
+  .plat-grid { margin-top: 2rem; }
+}
+
+@media (max-width: 380px) {
+  .plat-grid { grid-template-columns: repeat(2, 1fr); }
+  .sec-title { font-size: 1.8rem; }
+  .logo-block .name { font-size: 1.1rem; }
+  .logo-block .role { display: none; }
+  .hero-name .first { font-size: 2.6rem; }
+  .hero-name .last  { font-size: 2.8rem; }
+  .hero-hey { font-size: 1.7rem; }
+  .photo-frame { max-width: 100%; }
+  .bio-photo-wrap { max-width: 100%; }
+  .split-title { font-size: 1.7rem; }
+  .sec-inner { padding: 3rem 4vw; }
+  .split-inner { padding: 3rem 4vw; }
+  footer { padding: 1.8rem 4vw; }
+  .band-strip { gap: 0.8rem; padding: 0.6rem 4vw; }
+  .hero { padding-left: 4vw; padding-right: 4vw; padding-bottom: 2.5rem; }
+  .sec-head { margin-bottom: 1.2rem; }
+  .bio-entries { gap: 1.2rem; }
+  .hero-cta { gap: 0.5rem; }
+}
+
+/* ── REVEAL ── */
+.rve { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.rve.in { opacity: 1; transform: none; }
+</style>
 </head>
-
 <body>
-    <header>
-        <div class="container header-content">
-            <h1 class="nombre-artista">Johel García</h1>
-            <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
-                <span>&#9776;</span>
-            </button>
-            <nav>
-                <ul class="nav-links" id="nav-links">
-                    <li><a class="link-header" href="#bio">Bio</a></li>
-                    <li><a class="link-header" href="#links">Enlaces</a></li>
-                    <li><a class="link-header" href="#music">Mi Música</a></li>
-                    <li><a class="link-header" href="#prensa">Prensa</a></li>
-                    <li><a class="link-header" href="#gallery">Galería</a></li>
-                    <li><a class="link-header" href="https://wa.me/51956804564" target="_blank">Contacto</a></li>
-                    
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <main class="container">
-        <section id="bio" class="bio">
-            <h2 class="subtitulos">Bio</h2>
-            <div class="bio-content">
-                <div class="bio-text">
-                    <h3>Inicios</h3>
-                    <p>Soy de Comas, La Pascana. Me regalaron mi primera guitarra a los 15 años. Desde antes, escribía poemas a modo de "negocio" en el colegio. Luego de un difícil comienzo con la guitarra, al año escribí mi primera canción (muy trágica, dicho sea de paso).</p>
-                    
-                    <h3>Formación Musical</h3>
-                    <p>En el instituto conocí a amigos que motivaron mi aprendizaje como guitarrista, sacando covers de canciones populares. Paralelamente, seguía escribiendo mis propias canciones, influenciado por artistas como Joan Manuel Serrat, Álvaro Scaramelli, Raúl Ornelas y Luis Ángel.</p>
-                    
-                    <h3>Colaboraciones y Crecimiento</h3>
-                    <p>Colaboré en letras de canciones con amigos de Colombia, México, Puerto Rico y Perú. También tuve la oportunidad de cantar junto a Álvaro Scaramelli en dos ocasiones, lo que marcó un hito en mi carrera.</p>
-                    
-                    <h3>Actualidad</h3>
-                    <p>Hoy en día, he lanzado tres singles oficialmente, material extra en acústico y tengo canciones en una película peruana. Mi objetivo es dejar un legado en la historia, cantando y contando historias.</p>
-                </div>
-                <div class="bio-image">
-                    <img src="./img/Johel-Garcia.jpeg" alt="Johel García">
-                </div>
-            </div>
-            <div id="lo-ultimo" class="lo-ultimo">
-                <p class="descripcion-lo-ultimo">Últimas Publicaciones</p>
-                <div class="instagram-container">
-                    <div id="instagram-feed" class="instagram-posts">
-                        <!-- Las publicaciones se cargarán aquí dinámicamente -->
-                    </div>
-                </div>
-                <a href="https://www.instagram.com/johelgarciacantautor" target="_blank" class="ver-mas-instagram">
-                    Ver más en Instagram
-                </a>
-            </div>
-        </section>
-
-   
-
-        <section id="links" class="links">
-            <h2 class="subtitulos">Enlaces</h2>
-            <div class="links-grid">
-                <a href="https://open.spotify.com/intl-es/artist/2izIyhl2yy3wRx14hDHgKK" target="_blank" class="link-card">
-                    <img src="https://i.ibb.co/dpKjQzd/1.png" alt="Spotify">
-                    <h3>Spotify</h3>
-                </a>
-                <a href="https://music.apple.com/us/artist/johel-garcia/1481139428" target="_blank" class="link-card">
-                    <img src="https://i.ibb.co/yRv6Frr/1.png" alt="Apple Music">
-                    <h3>Apple Music</h3>
-                </a>
-                <a href="https://www.youtube.com/@johelgarciamusica" target="_blank" class="link-card">
-                    <img src="https://i.ibb.co/mJ1Db3w/2.png" alt="YouTube">
-                    <h3>YouTube</h3>
-                </a>
-                <a href="https://www.tiktok.com/@johelgarciacantautor" target="_blank" class="link-card">
-                    <img src="https://i.ibb.co/K5G6FBs/3.png" alt="TikTok">
-                    <h3>TikTok</h3>
-                </a>
-                <a href="https://www.instagram.com/johelgarciacantautor" target="_blank" class="link-card">
-                    <img src="https://i.ibb.co/b50hFGg/4.png" alt="Instagram">
-                    <h3>Instagram</h3>
-                </a>
-                <a href="https://tidal.com/browse/artist/16923354" target="_blank" class="link-card">
-                    <img src="https://i.ibb.co/xH045SC/2.png" alt="Tidal">
-                    <h3>Tidal</h3>
-                </a>
-            </div>
-        </section>
-
-     
-        <div class="row-sections">
-            <section id="music" class="music">
-                <h2 class="subtitulos">Mi Música</h2>
-                <div class="music-embeds">
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/2izIyhl2yy3wRx14hDHgKK?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                </div>
-            </section>
-
-            <section id="gallery" class="gallery">
-                <h2 class="subtitulos">Galería</h2>
-                <div class="carousel-container">
-                    <div class="carousel-images">
-                        <div class="img-slide"><img src="https://i.ibb.co/SQ4wkSp/1.png" alt="Imagen 1"></div>
-                        <div class="img-slide"><img src="https://i.ibb.co/GCJptqJ/2.png" alt="Imagen 2"></div>
-                        <div class="img-slide"><img src="https://i.ibb.co/jvsJR9B/3.png" alt="Imagen 3"></div>
-                        <div class="img-slide"><img src="https://i.ibb.co/x8t8W41/4.png" alt="Imagen 4"></div>
-                    </div>
-                    <button class="carousel-prev" onclick="changeSlide(-1)">&#10094;</button>
-                    <button class="carousel-next" onclick="changeSlide(1)">&#10095;</button>
-                </div>
-                <div class="carousel-indicators"></div>
-            </section>
-        </div>
-
-        <section id="prensa" class="prensa">
-            <h2 class="subtitulos">Prensa</h2>
-            <div class="prensa-grid">
-                <div class="prensa-card">
-                    <img src="https://i.ibb.co/YjymCJJ/prensa0.png" alt="Portada Conciertos Perú">
-                    <h3>Te Fuiste y Qué</h3>
-                    <p>Pablo Vélez y Johel García presentan "Te Fuiste y Qué" y buscan priorizar el amor propio.</p>
-                    <a href="https://conciertosperu.com.pe/pablo-velez-y-johel-garcia-presentan-te-fuiste-y-que-y-buscan-priorizar-el-amor-propio/" target="_blank" class="btn-leer-mas">Leer más</a>
-                </div>
-                <div class="prensa-card">
-                    <img src="https://i.ibb.co/JF5wqKY/prensa1.png" alt="Portada Agencia Andina">
-                    <h3>Oportunidad en el Cine</h3>
-                    <p>Johel García: "Poner nuestra música en una cinta peruana es una gran oportunidad".</p>
-                    <a href="https://andina.pe/agencia/noticia-johel-garcia-poner-nuestra-musica-una-cinta-peruana-es-una-gran-oportunidad-894444.aspx" target="_blank" class="btn-leer-mas">Leer más</a>
-                </div>
-                <div class="prensa-card">
-                    <img src="/img/tvo.PNG" alt="Portada TVO Lima">
-                    <h3>Llegan a la pantalla grande con sus canciones</h3>
-                    <p>Pablo Vélez y Johel García: “La radio y televisión deben voltear a mirar a los talentos peruanos”.</p>
-                    <a href="https://tvolima.pe/musicos-pablo-velez-y-johel-garcia-componen-la-banda-sonora-de-la-pelicula-peruana-seductores-irresistibles/" target="_blank" class="btn-leer-mas">Leer más</a>
-                </div>
-                <div class="prensa-card">
-                    <img src="https://i.ibb.co/TTQ08kT/prensa3.png" alt="Portada La Razón">
-                    <h3>Te Fuiste y Qué</h3>
-                    <p>Pablo Vélez y Johel García presentan "Te Fuiste y Qué" en La Razón.</p>
-                    <a href="https://larazon.pe/pablo-velez-y-johel-garcia-presentan-te-fuiste-y-que/#google_vignette" target="_blank" class="btn-leer-mas">Leer más</a>
-                </div>
-                <div class="prensa-card">
-                    <img src="/img/elpopular.PNG" alt="Portada El Popular">
-                    <h3>Llegan a Seductores Irresistibles</h3>
-                    <p>Pablo Vélez y Johel García: "Cantautores independientes en el cine peruano".</p>
-                    <a href="https://elpopular.pe/espectaculos/2022/05/06/dos-cantautores-independientes-son-parte-pelicula-peruana-seductores-irresistibles-126416" target="_blank" class="btn-leer-mas">Leer más</a>
-                </div>
-            </div>
-        </section>
-
-    
-
-        <!-- <section id="contact" class="contact">
-            <h2 class="subtitulos" id="contact-letra">Contacto</h2>
-            <form action="https://formspree.io/f/mwpkpzyz" method="POST" id="contactForm">
-                <input class="in" type="text" name="nombre" id="name" placeholder="Tu nombre" required>
-                <input class="in" type="email" name="email" id="email" placeholder="Tu email" required>
-                <textarea id="message" name="mensaje" placeholder="Tu mensaje" required></textarea>
-                <button class="boton-enviar" name="boton" type="submit">Enviar</button>
-            </form>
-            <p id="responseMessage" class="response-message"></p>
-        </section> -->
-    </main>
-
-    <footer>
-        <p class="letra-pie">&copy; 2025 Desarrollado por Spix Tech Todos los derechos reservados.</p>
-    </footer>
-    <div class="whatsapp-button" >
-        <p class="parrafo-wsp">¡Contáctame!</p>
-        <a href="https://wa.me/51956804564" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
-        </a>
+<!-- HEADER -->
+<header>
+  <a href="#" class="logo-block">
+    <span class="logo-icon">JG</span>
+    <div>
+      <div class="name">Johel García</div>
+      <div class="role">Cantautor · Comas, Lima</div>
     </div>
-    
-</body>
+  </a>
+  <nav>
+    <a href="#bio">Bio</a>
+    <a href="#plataformas">Plataformas</a>
+    <a href="#musica">Música</a>
+    <a href="#galeria">Galería</a>
+    <a href="#prensa">Prensa</a>
+    <a href="https://wa.me/51956804564" target="_blank">Contacto</a>
+  </nav>
+  <button class="menu-btn" aria-label="Menú" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
 
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="#bio">Bio</a>
+  <a href="#plataformas">Plataformas</a>
+  <a href="#musica">Música</a>
+  <a href="#galeria">Galería</a>
+  <a href="#prensa">Prensa</a>
+  <a href="https://wa.me/51956804564" target="_blank">Contacto</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Cantautor Peruano</p>
+    <h1 class="hero-name">
+      <span class="first">Johel</span>
+      <span class="last">García</span>
+    </h1>
+    <span class="hero-hey">Hago Canciones</span>
+    <p class="hero-tagline">Desde Comas, Lima — historias de mi vida, que para siempre cantaré.</p>
+    <div class="hero-cta">
+      <a href="https://open.spotify.com/intl-es/artist/2izIyhl2yy3wRx14hDHgKK" target="_blank" class="btn-cream">▶ Escuchar Ahora</a>
+      <a href="#bio" class="btn-ghost">La Historia</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="photo-frame">
+      <span class="photo-sticker">Cantautor Oficial</span>
+      <img src="https://johelgarciamusic.netlify.app/img/Johel-Garcia.jpeg" alt="Johel García">
+    </div>
+  </div>
+</div>
+
+<!-- BAND STRIP -->
+<div class="band-strip">
+  <span class="strip-item">Johel García</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Cantautor</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Lima · Perú</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Tres Singles</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Cine Peruano</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Spotify · Apple Music · YouTube</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Johel García</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Cantautor</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Lima · Perú</span>
+</div>
+
+<!-- BIO -->
+<div class="sec-dark" id="bio">
+  <div class="sec-inner">
+    <div class="sec-head rve">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title"><em>La Historia</em></h2>
+    </div>
+    <div class="bio-grid">
+      <div class="bio-photo-wrap rve">
+        <img src="https://johelgarciamusic.netlify.app/img/Johel-Garcia.jpeg" alt="Johel García">
+        <p class="bio-label">Johel García — Lima, Perú</p>
+      </div>
+      <div class="bio-entries rve">
+        <div class="bio-entry">
+          <h3>Inicios</h3>
+          <p>Nací en Comas, La Pascana, donde las calles tienen ritmo propio y cada esquina guarda una historia. Antes de tocar un acorde ya escribía poemas — los vendía en el colegio como quien sabe que las palabras valen. A los 15 llegó la guitarra, como regalo y como desafío. Un año de pelea y de silencio. Después, inevitable, llegó la primera canción: trágica, intensa, mía.</p>
+        </div>
+        <div class="bio-entry">
+          <h3>Formación Musical</h3>
+          <p>El instituto me dio amigos, covers y la certeza de que esto no era un pasatiempo. Serrat, Scaramelli, Ornelas y Luis Ángel me enseñaron que una canción puede ser literatura. Luego llegaron Sabina, Oceransky, Gaby Moreno, Leiva, Ariel Rot, Chuck Berry — y entendí que el rock y la trova no son géneros opuestos: son dos formas de decir la verdad.</p>
+        </div>
+        <div class="bio-entry">
+          <h3>Colaboraciones</h3>
+          <p>Las letras viajaron antes que yo. Escribí con músicos de Colombia, México, Puerto Rico y mi Perú. Y dos veces tuve el privilegio de compartir escenario con Álvaro Scaramelli — momentos que no se olvidan y que dejan claro, sin lugar a dudas, a dónde quieres llegar.</p>
+        </div>
+        <div class="bio-entry">
+          <h3>Actualidad</h3>
+          <p>Casi 15 años de aprendizajes, de momentos irrepetibles, de canciones que esperaron su turno. Hoy están aquí: tres singles, material acústico y música en una película peruana. Johel García no persigue la fama — persigue que sus canciones queden. Que alguien las escuche un martes cualquiera y sienta que alguien más vivió lo que él está viviendo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PLATAFORMAS -->
+<div class="sec-dark" id="plataformas" style="border-top: 1px solid rgba(242,232,208,0.1);">
+  <div class="sec-inner">
+    <div class="sec-head rve">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title"><em>Escúchame</em></h2>
+    </div>
+    <div class="plat-grid rve">
+      <a href="https://open.spotify.com/intl-es/artist/2izIyhl2yy3wRx14hDHgKK" target="_blank" class="plat-tile">
+        <img src="https://i.ibb.co/dpKjQzd/1.png" alt="Spotify"><span>Spotify</span>
+      </a>
+      <a href="https://music.apple.com/us/artist/johel-garcia/1481139428" target="_blank" class="plat-tile">
+        <img src="https://i.ibb.co/yRv6Frr/1.png" alt="Apple Music"><span>Apple Music</span>
+      </a>
+      <a href="https://www.youtube.com/@johelgarciamusica" target="_blank" class="plat-tile">
+        <img src="https://i.ibb.co/mJ1Db3w/2.png" alt="YouTube"><span>YouTube</span>
+      </a>
+      <a href="https://www.tiktok.com/@johelgarciacantautor" target="_blank" class="plat-tile">
+        <img src="https://i.ibb.co/K5G6FBs/3.png" alt="TikTok"><span>TikTok</span>
+      </a>
+      <a href="https://www.instagram.com/johelgarciacantautor" target="_blank" class="plat-tile">
+        <img src="https://i.ibb.co/b50hFGg/4.png" alt="Instagram"><span>Instagram</span>
+      </a>
+      <a href="https://tidal.com/browse/artist/16923354" target="_blank" class="plat-tile">
+        <img src="https://i.ibb.co/xH045SC/2.png" alt="Tidal"><span>Tidal</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- MÚSICA + GALERÍA -->
+<div class="split-wrap">
+  <div class="split-inner">
+    <div id="musica">
+      <div class="split-head rve">
+        <p class="split-kicker">Escucha</p>
+        <h2 class="split-title"><em>Mi Música</em></h2>
+      </div>
+      <div class="music-box rve">
+        <iframe src="https://open.spotify.com/embed/artist/2izIyhl2yy3wRx14hDHgKK?utm_source=generator&theme=0" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div id="galeria">
+      <div class="split-head rve">
+        <p class="split-kicker">Imágenes</p>
+        <h2 class="split-title"><em>Galería</em></h2>
+      </div>
+      <div class="car-box rve">
+        <div class="car-track" id="ct">
+          <div class="car-slide"><img src="https://i.ibb.co/SQ4wkSp/1.png" alt="1"></div>
+          <div class="car-slide"><img src="https://i.ibb.co/GCJptqJ/2.png" alt="2"></div>
+          <div class="car-slide"><img src="https://i.ibb.co/jvsJR9B/3.png" alt="3"></div>
+          <div class="car-slide"><img src="https://i.ibb.co/x8t8W41/4.png" alt="4"></div>
+        </div>
+        <div class="car-bar">
+          <button class="car-btn" id="cp">‹</button>
+          <div class="car-dots" id="cd">
+            <span class="car-dot on"></span><span class="car-dot"></span>
+            <span class="car-dot"></span><span class="car-dot"></span>
+          </div>
+          <button class="car-btn" id="cn">›</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRENSA -->
+<div class="sec-dark" id="prensa" style="border-top: 3px solid rgba(242,232,208,0.2);">
+  <div class="sec-inner">
+    <div class="sec-head rve">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title"><em>Prensa</em></h2>
+    </div>
+    <div class="prensa-grid rve">
+      <div class="p-card">
+        <div class="p-img"><img src="https://i.ibb.co/YjymCJJ/prensa0.png" alt="Conciertos Perú"></div>
+        <div class="p-body">
+          <span class="p-source">Conciertos Perú</span>
+          <h3>Te Fuiste y Qué</h3>
+          <p>Pablo Vélez y Johel García presentan "Te Fuiste y Qué" y buscan priorizar el amor propio.</p>
+          <a href="https://conciertosperu.com.pe/pablo-velez-y-johel-garcia-presentan-te-fuiste-y-que-y-buscan-priorizar-el-amor-propio/" target="_blank" class="p-link">Leer →</a>
+        </div>
+      </div>
+      <div class="p-card">
+        <div class="p-img"><img src="https://i.ibb.co/JF5wqKY/prensa1.png" alt="Andina"></div>
+        <div class="p-body">
+          <span class="p-source">Agencia Andina</span>
+          <h3>Oportunidad en el Cine</h3>
+          <p>Johel García: "Poner nuestra música en una cinta peruana es una gran oportunidad".</p>
+          <a href="https://andina.pe/agencia/noticia-johel-garcia-poner-nuestra-musica-una-cinta-peruana-es-una-gran-oportunidad-894444.aspx" target="_blank" class="p-link">Leer →</a>
+        </div>
+      </div>
+      <div class="p-card">
+        <div class="p-img"><img src="https://johelgarciamusic.netlify.app/img/tvo.PNG" alt="TVO Lima"></div>
+        <div class="p-body">
+          <span class="p-source">TVO Lima</span>
+          <h3>Llegan a la Pantalla Grande</h3>
+          <p>"La radio y televisión deben voltear a mirar a los talentos peruanos".</p>
+          <a href="https://tvolima.pe/musicos-pablo-velez-y-johel-garcia-componen-la-banda-sonora-de-la-pelicula-peruana-seductores-irresistibles/" target="_blank" class="p-link">Leer →</a>
+        </div>
+      </div>
+      <div class="p-card">
+        <div class="p-img"><img src="https://i.ibb.co/TTQ08kT/prensa3.png" alt="La Razón"></div>
+        <div class="p-body">
+          <span class="p-source">La Razón</span>
+          <h3>Te Fuiste y Qué</h3>
+          <p>Pablo Vélez y Johel García presentan "Te Fuiste y Qué" en La Razón.</p>
+          <a href="https://larazon.pe/pablo-velez-y-johel-garcia-presentan-te-fuiste-y-que/#google_vignette" target="_blank" class="p-link">Leer →</a>
+        </div>
+      </div>
+      <div class="p-card">
+        <div class="p-img"><img src="https://johelgarciamusic.netlify.app/img/elpopular.PNG" alt="El Popular"></div>
+        <div class="p-body">
+          <span class="p-source">El Popular</span>
+          <h3>Seductores Irresistibles</h3>
+          <p>Cantautores independientes en el cine peruano.</p>
+          <a href="https://elpopular.pe/espectaculos/2022/05/06/dos-cantautores-independientes-son-parte-pelicula-peruana-seductores-irresistibles-126416" target="_blank" class="p-link">Leer →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-brand">Johel García</a>
+  <span class="footer-copy">© 2025 · Todos los derechos reservados · Spix Tech</span>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/51956804564" target="_blank" class="wa" aria-label="WhatsApp">
+  <span class="wa-label">¡Contáctame!</span>
+  <div class="wa-icon">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </div>
+</a>
+
+<script>
+  let c = 0;
+  const ct = document.getElementById('ct');
+  const dots = document.querySelectorAll('.car-dot');
+  const n = dots.length;
+
+  function go(x) {
+    c = (x + n) % n;
+    ct.style.transform = `translateX(-${c * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('on', i === c));
+  }
+
+  document.getElementById('cn').onclick = () => go(c + 1);
+  document.getElementById('cp').onclick = () => go(c - 1);
+  dots.forEach((d, i) => d.onclick = () => go(i));
+  setInterval(() => go(c + 1), 4500);
+
+  const obs = new IntersectionObserver(
+    es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.rve').forEach(el => obs.observe(el));
+
+  const menuBtn = document.querySelector('.menu-btn');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  menuBtn.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    menuBtn.classList.toggle('open', isOpen);
+    menuBtn.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close menu on link click
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      menuBtn.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!menuBtn.contains(e.target) && !mobileNav.contains(e.target)) {
+      mobileNav.classList.remove('open');
+      menuBtn.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+</body>
 </html>
